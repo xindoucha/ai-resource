@@ -8,7 +8,7 @@
 
 |  | 公司名称 | 总部 | 核心产品 / 定位 | 详情 |
 | :---: | --- | --- | --- | :---: |
-| <img src="https://icons.duckduckgo.com/ip3/stepfun.com.ico" width="32" height="32" alt="阶跃星辰" /> | **阶跃星辰**<br>StepFun AI | 上海 | Step-2 万亿 MoE、多模态 API | [→](company/china/stepfun.md) |
+| <img src="https://www.stepfun.com/company/step-ai.svg" width="32" height="32" alt="阶跃星辰" /> | **阶跃星辰**<br>StepFun AI | 上海 | Step-2 万亿 MoE、多模态 API | [→](company/china/stepfun.md) |
 | <img src="https://www.google.com/s2/favicons?domain=minimaxi.com&sz=128" width="32" height="32" alt="MiniMax" /> | **MiniMax** | 上海 | 海螺 AI、ABAB 大模型、即梦 | [→](company/china/minimax.md) |
 | <img src="https://www.google.com/s2/favicons?domain=z.ai&sz=128" width="32" height="32" alt="智谱AI" /> | **智谱AI**<br>GLM | 北京 | ChatGLM、CogView、智谱清言 | [→](company/china/zhipu-ai.md) |
 | <img src="https://www.google.com/s2/favicons?domain=baichuan.ai&sz=128" width="32" height="32" alt="百川智能" /> | **百川智能**<br>Baichuan AI | 北京 | 百川大模型、医疗垂类 | [→](company/china/baichuan.md) |
