@@ -4,6 +4,8 @@ globs: company/**/*.md
 alwaysApply: false
 ---
 
+注意：公司文件已按地区分类，位于 `company/china/`、`company/usa/`、`company/europe/` 目录下。
+
 # AI 公司介绍文档模板
 
 在 `company/` 目录下创建或更新公司信息时，请遵循以下模板格式：
