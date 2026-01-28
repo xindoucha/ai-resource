@@ -1,6 +1,88 @@
 (function () {
   const FLAGS = { china: '🇨🇳', usa: '🇺🇸', europe: '🇪🇺' };
 
+  function ensureSafeExternalLink(a) {
+    if (!a || a.tagName !== 'A') return;
+    const href = a.getAttribute('href') || '';
+    if (!href) return;
+    // 站内 hash 路由不强制新开
+    if (href.startsWith('#')) return;
+    a.target = a.target || '_blank';
+    const rel = (a.getAttribute('rel') || '').split(/\s+/).filter(Boolean);
+    if (!rel.includes('noopener')) rel.push('noopener');
+    if (!rel.includes('noreferrer')) rel.push('noreferrer');
+    a.setAttribute('rel', rel.join(' '));
+  }
+
+  function linkifyPlainUrls(containerEl) {
+    if (!containerEl) return;
+    const EXCLUDE_TAGS = new Set(['A', 'CODE', 'PRE', 'SCRIPT', 'STYLE', 'TEXTAREA']);
+
+    function hasExcludedAncestor(node) {
+      let cur = node && node.parentNode;
+      while (cur && cur.nodeType === 1) {
+        if (EXCLUDE_TAGS.has(cur.tagName)) return true;
+        cur = cur.parentNode;
+      }
+      return false;
+    }
+
+    // 尽量保守：只识别 http(s) 与 www 开头
+    const urlRe = /\b((?:https?:\/\/|www\.)[^\s<>"']+)/gi;
+    const walker = document.createTreeWalker(containerEl, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (node) {
+        if (!node || !node.nodeValue) return NodeFilter.FILTER_REJECT;
+        if (!node.nodeValue.match(urlRe)) return NodeFilter.FILTER_REJECT;
+        if (hasExcludedAncestor(node)) return NodeFilter.FILTER_REJECT;
+        return NodeFilter.FILTER_ACCEPT;
+      }
+    });
+
+    const toProcess = [];
+    while (walker.nextNode()) toProcess.push(walker.currentNode);
+
+    toProcess.forEach(function (textNode) {
+      const text = textNode.nodeValue;
+      if (!text) return;
+      urlRe.lastIndex = 0;
+      let m;
+      let lastIdx = 0;
+      const frag = document.createDocumentFragment();
+      while ((m = urlRe.exec(text))) {
+        const raw = m[1];
+        const start = m.index;
+        const end = start + raw.length;
+
+        // 截掉常见尾随标点
+        let urlText = raw;
+        let trailing = '';
+        while (/[).,!?;:\]]$/.test(urlText)) {
+          trailing = urlText.slice(-1) + trailing;
+          urlText = urlText.slice(0, -1);
+        }
+
+        if (start > lastIdx) frag.appendChild(document.createTextNode(text.slice(lastIdx, start)));
+
+        const a = document.createElement('a');
+        a.textContent = urlText;
+        a.href = urlText.startsWith('www.') ? 'https://' + urlText : urlText;
+        ensureSafeExternalLink(a);
+        frag.appendChild(a);
+
+        if (trailing) frag.appendChild(document.createTextNode(trailing));
+        lastIdx = end;
+      }
+      if (lastIdx < text.length) frag.appendChild(document.createTextNode(text.slice(lastIdx)));
+
+      if (textNode.parentNode) textNode.parentNode.replaceChild(frag, textNode);
+    });
+
+    // 统一处理 markdown 生成的链接：确保外链安全打开
+    containerEl.querySelectorAll('a[href]').forEach(function (a) {
+      ensureSafeExternalLink(a);
+    });
+  }
+
   function renderCompanies(root, data, regionFilter) {
     if (!data || !data.companies) return;
     const regions = regionFilter === 'all'
@@ -153,6 +235,7 @@
     var entry = detailsData[detailId];
     titleEl.textContent = entry.title;
     bodyEl.innerHTML = entry.body;
+    linkifyPlainUrls(bodyEl);
     var githubHref = null;
     if (githubLink) {
       var hrefMap = getDetailIdToHref();
