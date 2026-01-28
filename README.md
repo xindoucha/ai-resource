@@ -10,7 +10,7 @@ AI 大模型公司和核心人员信息收集项目
 
 - **[公司名单](companies.md)** — 重要公司一览（含 Logo）
 - **[人物名单](people.md)** — 重要人物一览（48 位）
-- **展示网站** — 每次 push 到 `main` 后会通过 GitHub Actions 自动构建并部署到 GitHub Pages，可在仓库 **Settings → Pages** 中查看站点地址（需将 Source 选为 **GitHub Actions**）
+- **展示网站** — [https://xindoucha.github.io/ai-resource/](https://xindoucha.github.io/ai-resource/)，每次 push 到 `main` 后会通过 GitHub Actions 自动构建并部署到 GitHub Pages（需将 Source 选为 **GitHub Actions**）
 
 ---
 
