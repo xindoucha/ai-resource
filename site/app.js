@@ -153,12 +153,20 @@
     var entry = detailsData[detailId];
     titleEl.textContent = entry.title;
     bodyEl.innerHTML = entry.body;
-    var hrefMap = getDetailIdToHref();
-    if (hrefMap[detailId] && githubLink) {
-      githubLink.href = hrefMap[detailId];
-      githubLink.style.display = '';
-    } else if (githubLink) {
-      githubLink.style.display = 'none';
+    var githubHref = null;
+    if (githubLink) {
+      var hrefMap = getDetailIdToHref();
+      githubHref = hrefMap[detailId];
+      if (!githubHref && appData && appData.repoUrl && detailId) {
+        githubHref = appData.repoUrl.replace(/\/$/, '') + '/blob/main/' + detailId + '.md';
+      }
+      if (githubHref) {
+        githubLink.href = githubHref;
+        githubLink.style.display = '';
+      } else {
+        githubLink.href = '#';
+        githubLink.style.display = 'none';
+      }
     }
     listView.classList.add('hidden');
     detailView.classList.remove('hidden');
