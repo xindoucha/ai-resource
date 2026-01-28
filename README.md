@@ -10,6 +10,7 @@ AI 大模型公司和核心人员信息收集项目
 
 - **[公司名单](companies.md)** — 重要公司一览（含 Logo）
 - **[人物名单](people.md)** — 重要人物一览（48 位）
+- **展示网站** — 每次 push 到 `main` 后会通过 GitHub Actions 自动构建并部署到 GitHub Pages，可在仓库 **Settings → Pages** 中查看站点地址（需将 Source 选为 **GitHub Actions**）
 
 ---
 
@@ -67,6 +68,13 @@ AI 大模型公司和核心人员信息收集项目
 - 获奖荣誉
 - 社交媒体
 - 重要动态
+
+### 网站与部署
+
+项目包含静态展示页（`site/` 与 `scripts/build.js`），用于在网页上展示公司与学者列表。推送到 `main` 分支时，GitHub Actions 会执行构建并将结果部署到 GitHub Pages。
+
+- **本地构建**：`node scripts/build.js [repoUrl]`，生成目录为 `dist/`，其中 `repoUrl` 可选，用于详情链接（如 `https://github.com/owner/ai-resource`）。
+- **启用 Pages**：在仓库 **Settings → Pages → Build and deployment** 中，将 Source 选为 **GitHub Actions** 后，每次 push 到 `main` 的构建产物会自动发布为站点。
 
 ### 更新计划
 
