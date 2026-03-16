@@ -26,6 +26,7 @@
 | <img src="https://www.google.com/s2/favicons?domain=anthropic.com&sz=128" width="32" height="32" alt="Anthropic" /> | **Anthropic** | 旧金山 | Claude、Constitutional AI | [→](company/usa/anthropic.md) |
 | <img src="https://www.google.com/s2/favicons?domain=deepmind.google&sz=128" width="32" height="32" alt="Google DeepMind" /> | **Google DeepMind** | 伦敦 / 山景城 | Gemini、AlphaFold、AlphaGo | [→](company/usa/google-deepmind.md) |
 | <img src="https://www.google.com/s2/favicons?domain=x.ai&sz=128" width="32" height="32" alt="xAI" /> | **xAI** | 帕洛阿尔托 | Grok、Aurora | [→](company/usa/xai.md) |
+| <img src="https://www.google.com/s2/favicons?domain=thinkingmachines.ai&sz=128" width="32" height="32" alt="Thinking Machines Lab" /> | **Thinking Machines Lab** | 旧金山 | Tinker API、人机协作与可定制 AI，Mira Murati 创立 | [→](company/usa/thinking-machines-lab.md) |
 | — | **SSI**<br>Safe Superintelligence Inc | 帕洛阿尔托 / 特拉维夫 | 安全超级智能研究 | [→](company/usa/ssi.md) |
 
 ---

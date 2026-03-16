@@ -19,7 +19,7 @@ AI 大模型公司和核心人员信息收集项目
 ### 公司信息
 公司信息按地区分类，位于 `company/` 目录下：
 - **中国** (`company/china/`): 阶跃星辰、MiniMax、智谱AI、百川智能、月之暗面、通义千问、SEED等
-- **美国** (`company/usa/`): OpenAI、Anthropic、Google DeepMind、xAI、SSI等
+- **美国** (`company/usa/`): OpenAI、Anthropic、Google DeepMind、xAI、Thinking Machines Lab、SSI等
 - **欧洲** (`company/europe/`): AMI Labs等
 
 每个公司文件包含：
